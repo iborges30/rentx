@@ -1,9 +1,10 @@
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
+ 
 
 export const Container = styled.View`
   width: 100%;
-  height: 126px;
+  height: ${RFValue(126)}px;
   background-color: ${({ theme }) => theme.colors.background_secondary};
   flex-direction: row;
   justify-content: space-between;
@@ -60,6 +61,6 @@ export const Type= styled.View`
 `;
 
 export const CarImage= styled.Image`
-  width: 167px;
-  height: 85px;
+  width: ${RFValue(167)}px;
+  height: ${RFValue(85)}px;
 `;
