@@ -15,8 +15,9 @@ import {
 } from "@expo-google-fonts/archivo";
 
 
-import { Scheduling } from "./src/screens/Scheduling";
+ 
 import theme from "./src/screens/styles/theme";
+import { SchedulingComplete } from "./src/screens/SchedulingComplete";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -33,7 +34,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Scheduling />
+      <SchedulingComplete />
     </ThemeProvider>
   );
 }
