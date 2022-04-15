@@ -4,9 +4,11 @@ import { RFValue } from "react-native-responsive-fontsize";
 
 import Logo from "../../assets/logo.svg";
 import { Car } from "../../components/Car";
+import { Load } from "../../components/Load";
 
 import { Container, Header, TotalCars, HeaderContent, CarList } from "./styles";
 import { useNavigation } from "@react-navigation/native";
+
 import { api } from "../../services/api";
 import { CarDTO } from "../../dtos/CarDTO";
 
@@ -42,6 +44,8 @@ export function Home() {
         setLoading(false);
       }
     }
+
+    fetchCars();
   }, []);
 
   return (
@@ -59,13 +63,17 @@ export function Home() {
         </HeaderContent>
       </Header>
 
-      <CarList
-        data={cars}
-        keyExtractor={(item=>}
-        renderItem={({ item }) => (
-          <Car data={carData} onPress={handCarDetails} />
-        )}
-      />
+      {loading ? (
+        <Load />
+      ) : (
+        <CarList
+          data={cars}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => (
+            <Car data={item} onPress={handCarDetails} />
+          )}
+        />
+      )}
     </Container>
   );
 }
