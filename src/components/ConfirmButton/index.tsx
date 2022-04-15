@@ -10,14 +10,15 @@ import {
 
 interface Props extends RectButtonProps{
     title:string;
+    color?:string
 }
 
 
 export function ConfirmButton({
-    title, ...rest
+    title,color, ...rest
 }:Props){
  return (
- <Container>
+ <Container  {...rest}>
 <Title>{title}</Title>
  </Container>
 );

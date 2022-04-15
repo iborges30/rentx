@@ -127,7 +127,8 @@ export const DateValue = styled.Text`
 
 export const RentalPrice = styled.View`
 width:100% ;
-margin-top:16px;
+margin-top:1px;
+ 
 
 `;
 export const RentalPriceLabel = styled.Text`

@@ -3,7 +3,7 @@ import { Accessory } from "../../components/Accessory";
 import { BackButton } from "../../components/BackButton";
 
 import { ImageSlider } from "../../components/ImageSlider";
-
+import { useNavigation } from "@react-navigation/native";
 import speedSvg from "../../assets/speed.svg";
 import accelerationSvg from "../../assets/acceleration.svg";
 import forceSvg from "../../assets/force.svg";
@@ -25,11 +25,17 @@ import {
   Price,
   About,
   Acessories,
-  Footer
+  Footer,
 } from "./styles";
 import { Button } from "../../components/Button";
 
 export function CarDetails() {
+
+  const navigaton = useNavigation();
+  function handConfirmRental() {
+    navigaton.navigate("Scheduling");
+  }
+
   return (
     <Container>
       <Header>
@@ -71,12 +77,11 @@ export function CarDetails() {
           indultado na praça Real Maestranza de Sevilla. É um belíssimo carro
           para quem gosta de acelerar.
         </About>
-        
       </Content>
 
-    <Footer>
-    <Button title='Confirmar' />
-    </Footer>
+      <Footer>
+        <Button title="Escolher o período do aluguel" onPress={handConfirmRental}/>
+      </Footer>
     </Container>
   );
 }

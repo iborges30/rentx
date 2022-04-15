@@ -14,7 +14,7 @@ align-items:center ;
 justify-content:center ;
 padding:19px ;
 border-radius:8px ;
-background-color:${({color, theme})=>color ? color: theme.colors.main} ;
+background-color:${({color})=>color } ;
 `;
 export const Title=styled.Text`
 font-family:${({theme})=>theme.fonts.primary_500} ;
