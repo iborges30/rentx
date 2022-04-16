@@ -16,21 +16,12 @@ export function Home() {
   const [cars, setCars] = useState<CarDTO[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const carData = {
-    brand: "Audi",
-    name: "Coupé",
-    rent: {
-      period: "AO DIA",
-      price: 120,
-    },
-    thumbnail:
-      "https://mediaservice.audi.com/media/live/50900/fly1400x601n1/f5f/2021.png",
-  };
+ 
 
   const navigaton = useNavigation();
 
-  function handCarDetails() {
-    navigaton.navigate("CarDetails");
+  function handCarDetails(car:CarDTO) {
+    navigaton.navigate("CarDetails", {car});
   }
 
   useEffect(() => {
@@ -70,7 +61,7 @@ export function Home() {
           data={cars}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
-            <Car data={item} onPress={handCarDetails} />
+            <Car data={item} onPress={()=>handCarDetails(item)} />
           )}
         />
       )}

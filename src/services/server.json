@@ -7,7 +7,7 @@
       "about": "O carro ainda tem sistema de tração nas quatro rodas Quattro com diferencial traseiro esportivo de série. De acordo com a Audi, ele faz o mesmo em 3,8 segundos na Sportback.",
       "rent": {
         "period": "Ao dia",
-        "price": 120
+        "price": 120.33
       },
       "fuel_type": "electric",
       "thumbnail": "https://storage.googleapis.com/golden-wind/ignite/react-native/thumbnails/1.png",
