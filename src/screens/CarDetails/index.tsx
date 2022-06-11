@@ -40,7 +40,7 @@ export function CarDetails() {
   const { car } = route.params as Params;
 
   function handleConfirmRental() {
-    navigaton.navigate("Scheduling");
+    navigaton.navigate("Scheduling", {car});
   }
 
   

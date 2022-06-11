@@ -51,10 +51,15 @@ export function SchedulingDetails() {
   function handConfirmRental(){
       navigaton.navigate('SchedulingComplete');
   }
+
+
+  function handleBack() {
+    navigaton.goBack();
+  }
   return (
     <Container>
       <Header>
-        <BackButton onPress={() => {}} />
+        <BackButton onPress={handleBack} />
       </Header>
 
       <CarImage>
