@@ -4,12 +4,6 @@ import { BackButton } from "../../components/BackButton";
 
 import { ImageSlider } from "../../components/ImageSlider";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import speedSvg from "../../assets/speed.svg";
-import accelerationSvg from "../../assets/acceleration.svg";
-import forceSvg from "../../assets/force.svg";
-import gasolineSvg from "../../assets/gasoline.svg";
-import exchangeSvg from "../../assets/exchange.svg";
-import peopleSvg from "../../assets/people.svg";
 
 import {
   Container,
@@ -29,6 +23,12 @@ import {
 } from "./styles";
 import { Button } from "../../components/Button";
 import { CarDTO } from "../../dtos/CarDTO";
+import {getAccessoryIcon} from '../../utils/getAccessoryIcons';
+
+
+
+
+
 
 interface Params {
   car: CarDTO;
@@ -43,6 +43,7 @@ export function CarDetails() {
     navigaton.navigate("Scheduling");
   }
 
+  
   function handleBack() {
     navigaton.goBack();
   }
@@ -75,7 +76,8 @@ export function CarDetails() {
 
           {
             car.accessories.map(acessory =>(
-              <Accessory name="380km/h" icon={speedSvg}
+              <Accessory name="380km/h" 
+              icon={getAccessoryIcon(acessory.type)}
               
               key={acessory.type}
               name={acessory.name}
