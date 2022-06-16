@@ -16,7 +16,7 @@ export function SchedulingComplete() {
 
   function handConfirm() {
     navigaton.navigate('Home');
-    console.log("teste");
+     
     
   }
 

@@ -71,7 +71,7 @@ interface DayProps {
       }}
 
       firstDay={1}
-      minDate={new Date()}
+      minDate={String(new Date())}
       markedDates={markedDates}
       markingType="period"
       onDayPress={onDayPress}
