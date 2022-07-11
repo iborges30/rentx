@@ -6,22 +6,30 @@ import Logo from "../../assets/logo.svg";
 import { Car } from "../../components/Car";
 import { Load } from "../../components/Load";
 
-import { Container, Header, TotalCars, HeaderContent, CarList } from "./styles";
+import { Container, Header, TotalCars, HeaderContent, CarList, MyCarsButtom } from "./styles";
 import { useNavigation } from "@react-navigation/native";
 
 import { api } from "../../services/api";
 import { CarDTO } from "../../dtos/CarDTO";
+import {Ionicons} from "@expo/vector-icons";
+import { useTheme } from "styled-components";
 
 export function Home() {
   const [cars, setCars] = useState<CarDTO[]>([]);
   const [loading, setLoading] = useState(true);
 
+  const theme = useTheme();
+
  
 
   const navigaton = useNavigation();
 
-  function handCarDetails(car:CarDTO) {
+  function handleCarDetails(car:CarDTO) {
     navigaton.navigate("CarDetails", {car});
+  }
+
+  function handleOpenMyCars() {
+    navigaton.navigate("MyCars");
   }
 
   useEffect(() => {
@@ -50,7 +58,7 @@ export function Home() {
       <Header>
         <HeaderContent>
           <Logo width={RFValue(108)} height={RFValue(12)} />
-          <TotalCars> Total de 12 carros</TotalCars>
+          <TotalCars> Total de {cars.length} de carros</TotalCars>
         </HeaderContent>
       </Header>
 
@@ -61,10 +69,17 @@ export function Home() {
           data={cars}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
-            <Car data={item} onPress={()=>handCarDetails(item)} />
+            <Car data={item} onPress={()=>handleCarDetails(item)} />
           )}
         />
       )}
+
+      <MyCarsButtom onPress={handleOpenMyCars}>
+
+        <Ionicons name="ios-car-sport" 
+        color={theme.colors.shape} 
+        size={32}/>
+      </MyCarsButtom>
     </Container>
   );
 }
