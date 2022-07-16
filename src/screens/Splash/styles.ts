@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import theme from '../styles/theme';
  
 
 
@@ -8,5 +9,5 @@ flex:1;
 justify-content:center ;
 align-items: center;
 
-background-color: #000 ;
+background-color: ${({theme})=>theme.colors.header}
 `;

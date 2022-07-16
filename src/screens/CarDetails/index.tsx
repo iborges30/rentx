@@ -1,6 +1,17 @@
 import React from "react";
+
+import Animated, {
+  useSharedValue,
+  useAnimatedScrollHandler,
+  AnimateStyle
+} from "react-native-reanimated";
+
+
+
+
 import { Accessory } from "../../components/Accessory";
 import { BackButton } from "../../components/BackButton";
+
 
 import { ImageSlider } from "../../components/ImageSlider";
 import { useNavigation, useRoute } from "@react-navigation/native";
@@ -9,7 +20,6 @@ import {
   Container,
   Header,
   CarImage,
-  Content,
   Details,
   Description,
   Brand,
@@ -24,6 +34,7 @@ import {
 import { Button } from "../../components/Button";
 import { CarDTO } from "../../dtos/CarDTO";
 import {getAccessoryIcon} from '../../utils/getAccessoryIcons';
+import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
 
 
@@ -38,6 +49,15 @@ export function CarDetails() {
   const navigaton = useNavigation();
   const route = useRoute();
   const { car } = route.params as Params;
+
+
+
+  const scrollY = useSharedValue(0);
+  const scrollHandler = useAnimatedScrollHandler((event) => {
+    console.log(event.contentOffset.y);
+    scrollY.value = event.contentOffset.y;
+  });
+
 
   function handleConfirmRental() {
     navigaton.navigate("Scheduling", {car});
@@ -59,7 +79,16 @@ export function CarDetails() {
         />
       </CarImage>
 
-      <Content>
+      <Animated.ScrollView
+        contentContainerStyle={{
+          paddingHorizontal: 24,
+          paddingTop: getStatusBarHeight(),
+        }}
+
+        showsVerticalScrollIndicator={false}
+        onScroll={scrollHandler}
+         scrollEventThrottle={16}
+      >
         <Details>
           <Description>
             <Brand>{car.brand}</Brand>
@@ -88,8 +117,15 @@ export function CarDetails() {
          
         </Acessories>
 
-        <About>{car.about}</About>
-      </Content>
+        <About>
+          {car.about}
+          {car.about}
+          {car.about}
+          {car.about}
+          {car.about}
+        </About>
+
+      </Animated.ScrollView>
 
       <Footer>
         <Button
